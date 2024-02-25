@@ -1,25 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 
+import { useSelector } from 'react-redux';
+import Home from './components/Home';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import PrivateRoute from './components/PrivateRoute';
+import Login from './components/auth/LoginPage';
+import NotFound from './pages/NotFound';
+import Header from './components/Header';
+
 function App() {
+  const tokenFromLocalStorage = localStorage.getItem('user');
+  const tokenFromRedux = useSelector((state: any) => state.auth.isAuthenticated);
+  const isAuthenticated = tokenFromLocalStorage || tokenFromRedux;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+      {isAuthenticated &&  <Header />}
+          <Routes>
+            {/* Public routes */}
+            <Route path="/login" element={<Login />} />
+            <Route path="*" element={<NotFound />} />
+
+            {/* Private route using PrivateRoute component */}
+            <Route path="/" element={<PrivateRoute />}>
+              <Route path="/" element={<Home />} />
+            </Route>
+
+          </Routes>
+          </Router>
+  </>
   );
 }
 
