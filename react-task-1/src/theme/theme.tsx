@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export const theme = {
     colors: {
       primary: '#6153CD',
@@ -8,3 +10,9 @@ export const theme = {
       textGray: '#0F0049',
     },
 };
+
+export const Container = styled.section`
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; 
+`;

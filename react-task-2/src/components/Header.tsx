@@ -51,7 +51,7 @@ const Header: React.FC = () => {
     }
 
   return (
-    <HeaderContainer>
+     <HeaderContainer>
       <HeaderTitle>Header</HeaderTitle>
       {username && onLogout && (
         <UserInfo>

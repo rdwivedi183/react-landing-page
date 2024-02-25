@@ -45,7 +45,8 @@ const FooterImage = styled.img`
 
 const Footer: React.FC = () => {
   return (
-      <FooterContainer>
+ 
+<FooterContainer>
       <FooterSection>
         <FooterHeading>Digital Agency</FooterHeading>
         <FooterText>
@@ -78,6 +79,8 @@ const Footer: React.FC = () => {
 
       </FooterSection>
     </FooterContainer>
+   
+      
   );
 };
 

@@ -1,18 +1,20 @@
 import React from 'react';
 import './App.css';
+
 import Footer from './components/Footer';
-import { theme } from './theme/theme';
-import { ThemeProvider } from 'styled-components';
 import Header from './components/Header';
 import LandingPage from './pages/LandingPage';
+import { Container } from './theme/theme';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <>
+    <Container>
       <Header />
       <LandingPage />
-      <Footer />
-    </ThemeProvider>
+    </Container>
+      <Footer /> 
+    </>
    
   );
 }
